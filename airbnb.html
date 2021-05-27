@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에어비앤비</title>
+    <link rel="stylesheet" href="에어비앤비.css">
+    <style>
+        body{
+            height: 100%;
+            margin: 0px;
+            font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        header{
+            height: 100px;
+            width: 100%;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        .header_top{
+            text-align: center;
+            background-color: rgb(247, 247, 247);
+            height: 50px;
+            padding: 15px;
+        }
+        .header_container{
+            padding: 3vw;
+            padding-top: 20px;
+            padding-bottom: 0px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .searchBar{
+            flex: 1;
+        }
+        .tab_menu_container{
+            display: flex;
+            justify-content: center;
+            padding-left: 10%;
+            z-index: -1;
+        }
+        .tab_menu_btn {
+            background: none;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            width: 100px;
+            height: 40px;
+            transition: 0.3s all;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .hostBtn {
+            font-weight: bold;
+            font-size: 14px;
+            background: none;
+            border-style: none;
+            border-width: 1px;
+            border-radius: 32px;
+            width: 102px;
+            height: 42px;
+            cursor: pointer;
+            margin-left: auto;
+        }
+        .globeBtn {
+            background: none;
+            width: 60px;
+            height: 42px;
+            padding: 5px 0px 5px 0px;
+            border-style: none;
+            border-radius: 32px;
+            border-color: rgb(221, 221, 221);
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .header_dropdown {
+            display: inline-block;
+            height: 40px;
+        }
+        .dropBtn {
+            background: none;
+            width: 77px;
+            height: 42px;
+            padding: 5px 0px 5px 0px;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 32px;
+            border-color: gray;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+        .burger {
+            margin: 5px 5px 5px 9px;
+            height: 18px;
+            width: 22px;
+        }
+        .user_icon {
+            margin-right: 5px;
+            height: 30px;
+        }
+        .first_section {
+            border-radius: 12px;
+            height: 400px;
+            margin: 0px 12vw 20px 12vw;
+        }
+        .first_article {
+            margin-right: auto;
+            font-size: 20px;
+            font-weight: bolder;
+            padding: 20px 0px 0px 50px;
+            width: 40%;
+        }
+        .article_title {
+            font-size: 60px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .article_title2 {
+            font-size: 60px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .article_content {
+            font-size: 19px;
+            font-weight: normal;
+        }
+        .osusume{
+            background-color: black;
+            color: white;
+            font-weight: 900;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+        cover{
+            background: url(../img/airbnb.PNG) no-repeat center/cover;
+            height: 650px;
+        }
+        h1{
+            margin: 30px;
+        }
+        .table_1{
+            width: 1500px;
+            height: auto;
+            margin: 10px;
+        }
+        th{
+            text-align: left;
+        }
+        .img1{
+            border-radius: 10px;
+            margin-right: -40px;
+        }
+        .table_0{
+            margin: 60px;
+        }
+        .table_title{
+            font-weight: 900;
+            margin: 10px;
+            font-size: xx-large;
+        }
+        .gridLive{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            margin-left: 60px;
+            margin-top: 20px;
+        }
+        .liveItem{
+            border-radius: 20px;
+            width: 312px;
+            height: 312px;
+        }
+        .liveSpan{
+            font-weight: 900;
+            font-size: 18px;
+        }
+        .live_Title{
+            font-weight: 900;
+            margin: 60px;
+            font-size: xx-large;
+        }
+        .keiken_Title{
+            font-weight: 900;
+            margin: 60px;
+            font-size: xx-large;
+        }
+        .mini_keiken_title{
+            display: block;
+            margin-left: 60px;
+            font-size: x-large;
+        }
+        .keikenSpan{
+            display: block;
+            font-weight: 900;
+            font-size: 18px;
+        }
+        .keikenMiniSpan{
+            font-size: 14px;
+        }
+        .gridKeiken{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin-left: 0;
+            margin-top: 20px;
+        }
+        .keikenItem{
+            border-radius: 20px;
+            width: 430px;
+            height: 430px;
+        }
+        .section5_house{
+            position: relative;
+            width: 1400px;
+            height: 400px;
+            margin: 60px;
+        }
+        .section5_banner{
+            border-radius: 20px;
+        }
+        .bannerSpan{
+            position: absolute;
+            top: 30%;
+            left:5%;
+            font-size: 50px;
+            font-weight: 900;
+            color: white;
+        }
+        .bannerSpan2{
+            position: absolute;
+            top: 45%;
+            left:5%;
+            font-size: 50px;
+            font-weight: 900;
+            color: white;
+        }
+        .bannerSpan3{
+            position: absolute;
+            top: 65%;
+            left:5%;
+            font-size: 18px;
+            font-weight: 500;
+            color: white;
+        }
+        .bannerBtn{
+            position: absolute;
+            top: 90%;
+            left: 5%;
+            width: 180px;
+            height: 60px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 900;
+            font-size: medium;
+            border: none;
+        }
+        footer{
+            background: #f7f7f7;
+            border-top: 1px solid lightgray;
+            padding: 10px;
+        }
+        .footer_home{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        ul{
+            list-style: none;
+        }
+        li{
+            margin: 15px;
+        }
+        li:nth-child(1){
+            font-weight: 900;
+            font-size: small;
+        }
+        .fts1{
+            margin: 3px;
+            font-size: 14px;
+        }
+        .fts1:nth-child(1){
+            margin-left: 40px;
+        }
+        .footerSpan{
+            padding: 10px;
+            border-top: 1px solid #DDDD;
+        }
+        .fts2{
+            padding: 20px;
+            text-decoration: underline;
+        }
+        .fts2Div{
+            float: right;
+            display: inline;
+            margin-right: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <cover>
+    <header>
+        <nav class="header_container">
+            <div class="header_item">
+                <a href="#">
+                    <img src="../img/airbnb.svg" height="47px">
+                </a>
+            </div>
+            <div class="header_item searchBar">
+                <div class="tab_menu_container">
+                    <button class="tab_menu_btn on">
+                        숙소
+                    </button>
+                    <button class="tab_menu_btn">체험</button>
+                    <a href="#">
+                        <button class="tab_menu_btn">온라인 체험</button>
+                    </a>
+                </div>
+            </div>
+            <div class="header_item hostBtn">
+                <button class="hostBtn">호스트 되기</button>
+            </div>
+            <div class="header_item">
+                <button class="globeBtn">
+                    <img class="globe" src="../img/globe.png">
+                </button>
+            </div>
+            <div class="header_item">
+                <div class="header_dropdown">
+                    <button class="dropBtn">
+                        <img class="burger" src="../img/dropdown.jpg" height="20px">
+                        <img class="user_icon" src="../img/user.png" height="30px">
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <article class="first_section">
+                <article class="first_article"></article>
+                <div class="article_title">
+                    <span>슬기로운</span>
+                </div>
+                <div class="article_title2">
+                    <span>자연생활</span>
+                </div>
+                <p class="article_content">
+                    에어비앤비가 엄선한 위시리스트를 만나보세요.
+                </p>
+                <button class="osusume">
+                    여행 아이디어 얻기
+                </button>
+            </article>
+        </section>
+    </main>
+</cover>
+        <section2>
+            <div class = "table_0">
+            <span class = "table_title">가까운 여행지 둘러보기</span>
+                <table class = "table_1" cellspacing = -100px;>
+                    <tr>
+                        <td rowspan="2"><img class = "img1" src="../img/seoul.jpg" width="72px;" height="72px;"></td>
+                        <th>서울</th>
+                        <td rowspan="2"><img class = "img1" src="../img/daegu.jpg" width="72px;" height="72px;"></td>
+                        <th>대구</th>
+                        <td rowspan="2"><img class = "img1" src="../img/ulsan.jpg" width="72px;" height="72px;"></td>
+                        <th>울산</th>
+                        <td rowspan="2"><img class = "img1" src="../img/daejeon.jpg" width="72px;" height="72px;"></td>
+                        <th>대전</th>
+                    </tr>
+                    <tr>
+                        <td>차로 5시간 거리</td>
+                        <td>차로 1.5시간 거리</td>
+                        <td>차로 3시간 거리</td>
+                        <td>차로 3.5시간 거리</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><img class = "img1" src="../img/gwangju.jpg" width="72px;" height="72px;"></td>
+                        <th>대구</th>
+                        <td rowspan="2"><img class = "img1" src="../img/incheon.jpg" width="72px;" height="72px;"></td>
+                        <th>대전</th>
+                        <td rowspan="2"><img class = "img1" src="../img/ansan.jpg" width="72px;" height="72px;"></td>
+                        <th>인천</th>
+                        <td rowspan="2"><img class = "img1" src="../img/suwon.jpg" width="72px;" height="72px;"></td>
+                        <th>수원</th>
+                    </tr>
+                    <tr>
+                        <td>차로 1.5시간 거리</td>
+                        <td>차로 3.5시간 거리</td>
+                        <td>차로 5시간 거리</td>
+                        <td>차로 4.5시간 거리</td>
+                    </tr>
+                </table>
+            </div>
+        </section2>
+        <section3>
+            <div class="live">
+                <span class = "live_Title">어디에서나, 여행은 살아보는 거야!</span>
+                <div class="gridLive">
+                    <div class="liveItem"><img src="../img/home1.jpg" class = "liveItem"><span class = "liveSpan">자연생활을 만끽할 수 있는 숙소</span></div>
+                    <div class="liveItem"><img src="../img/home2.jpg" class = "liveItem"><span class = "liveSpan">독특한 공간</span></div>
+                    <div class="liveItem"><img src="../img/home3.jpg" class = "liveItem"><span class = "liveSpan">집 전체</span></div>
+                    <div class="liveItem"><img src="../img/home4.jpg" class = "liveItem"><span class = "liveSpan">반려동물 동반 가능</span></div>
+                </div>
+            </div>
+        </section3>
+        <br><br><br><br><br>
+        <section4>
+            <div class="keiken">
+                <span class = "keiken_Title">체험 둘러보기</span>
+                <span class = "mini_keiken_title">현지 전문가와 함께하는 독특한 액티비티에 오프라인이나 온라인으로 참여해 보세요.</p>
+                <div class="gridKeiken">
+                    <div class="keikenItem">
+                        <img src="../img/keiken1.jpg" class = "keikenItem">
+                        <span class = "keikenSpan">추천 컬렉션: 여행 본능을 깨우는 체험</span>
+                        <span class="keikenMiniSpan">온라인 체험으로 집에서 랜선 여행을 즐기세요.</span>
+                    </div>
+                    <div class="keikenItem">
+                        <img src="../img/keiken2.jpg" class = "keikenItem">
+                        <span class = "keikenSpan">온라인 체험</span>
+                        <span class="keikenMiniSpan">호스트와 실시간으로 소통하면서 액티비티를 즐겨보세요.</span>
+                    </div>
+                    <div class="keikenItem">
+                        <img src="../img/keiken3.jpg" class = "keikenItem">
+                        <span class = "keikenSpan">체험</span>
+                        <span class="keikenMiniSpan">어디에서든 세계 각지의 매력을 만나실 수 있습니다.</span>
+                    </div>
+                </div>
+            </div>
+        </section4>
+        <br><br><br><br><br>
+        <section5>
+            <div class = "section5_house">
+                <div>
+                    <img src="../img/hostBanner.jpg" width="1400px" height="500px" class = "section5_banner">
+                    <span class = "bannerSpan">호스트가</span>
+                    <span class = "bannerSpan2">되어보세요</span>
+                    <span class = "bannerSpan3">숙소를 공유하여 부수입을 올리고 새로운<br>가능성을 만나세요.</span>
+                    <button class = "bannerBtn">자세히 알아보기</button>
+                </div>
+            </div>
+        </section5>
+        <br><br><br><br><br>
+    <footer>
+        <div class = "footerAll">
+            <div class="footer_home">
+                <div class="footer_ul1">
+                    <ul>
+                        <li>소개</li>
+                        <li>에어비앤비 이용 방법</li>
+                        <li>뉴스룸</li>
+                        <li>투자자 정보</li>
+                        <li>에어비앤비 플러스</li>
+                        <li>에어비앤비 Luxe</li>
+                        <li>호텔투나잇</li>
+                        <li>에어비앤비 비즈니스 프로그램</li>
+                        <li>호스트 분들이 있기에 가능합니다</li>
+                        <li>채용정보</li>
+                        <li>창립자 편지</li>
+                    </ul>
+                </div>
+                <div class="footer_ul2">
+                    <ul>
+                        <li>커뮤니티</li>
+                        <li>다양성 및 소속감</li>
+                        <li>접근성</li>
+                        <li>에이버앤비 어소시에이트</li>
+                        <li>구호 인력을 위한 숙소</li>
+                        <li>게스트 추천</li>
+                        <li>Airbnb.org</li>
+                    </ul>
+                </div>
+                <div class="footer_ul3">
+                    <ul>
+                        <li>호스팅하기</li>
+                        <li>숙소 호스팅</li>
+                        <li>온라인 체험 호스팅하기</li>
+                        <li>체험 호스팅하기</li>
+                        <li>책임감 있는 호스팅</li>
+                        <li>자료 센터</li>
+                        <li>커뮤니티 센터</li>
+                    </ul>
+                </div>
+                <div class="footer_ul4">
+                    <ul>
+                        <li>에어비앤비 지원</li>
+                        <li>에어비앤비의 코로나19 대응 방안</li>
+                        <li>도움말 센터</li>
+                        <li>예약 취소 옵션</li>
+                        <li>에어비앤비 이웃 민원 지원</li>
+                        <li>신뢰와 안전</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footerSpan">
+                <span class = "fts1">© 2021 Airbnb,lnc</span><span class = "fts1">·</span>
+                <span class = "fts1">개인정보 처리방침</span><span class = "fts1">·</span>
+                <span class = "fts1">이용약관</span><span class = "fts1">·</span>
+                <span class = "fts1">사이트맵</span><span class = "fts1">·</span>
+                <span class = "fts1">한국의 변경된 환불 정책</span><span class = "fts1">·</span>
+                <span class = "fts1">회사 세부정보</span>
+                <div class = "fts2Div">
+                    <span class = "fts2"><img src="../img/language.svg" width="12px" height="12px" style = "display: inline;">&nbsp;한국어 (KR)</span><span class = "fts2">₩&nbsp;&nbsp;KRW</span>
+                    <span class="fts3" style = "display: inline;">
+                        <img src="../img/facebook-logo.svg" width="12px" height="12px" style = "display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="../img/twitter.svg" width="12px" height="12px" style = "display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="../img/instagram-symbol.svg" width="12px" height="12px" style = "display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="../img/naver.PNG" width="12px" height="12px" style = "display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="../img/pencil.PNG" width="12px" height="12px" style = "display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
